@@ -1,0 +1,191 @@
+/* ---------- General Page Styles ---------- */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #FFFFF0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://wallpaperaccess.com/full/4644779.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* ---------- Moving Spotlight ---------- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 70%);
+    animation: spotlightMove 20s infinite linear;
+    pointer-events: none;
+    z-index: 0;
+}
+@keyframes spotlightMove {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    50% { transform: translate(-50%, -50%) rotate(180deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ---------- Container ---------- */
+.container {
+    text-align: center;
+    background: rgba(20, 20, 40, 0.85);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(65, 105, 225, 0.6), 0 0 25px rgba(138, 43, 226, 0.4);
+    width: 450px;
+    margin: 40px auto;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1s ease-in-out;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(65, 105, 225, 0.7), 0 0 35px rgba(138, 43, 226, 0.5);
+}
+
+/* ---------- Headings ---------- */
+h1 {
+    color: #FFFFF0;
+    font-size: 32px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    animation: pulseGlow 2s infinite alternate;
+}
+.subtitle {
+    color: #CCCCCC;
+    font-size: 16px;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+@keyframes pulseGlow {
+    0% { text-shadow: 0 0 8px rgba(255,255,255,0.5); }
+    50% { text-shadow: 0 0 15px rgba(255,255,255,0.8); }
+    100% { text-shadow: 0 0 8px rgba(255,255,255,0.5); }
+}
+
+/* ---------- Buttons ---------- */
+a button, button {
+    display: inline-block;
+    min-width: 150px;
+    padding: 12px 18px;
+    margin: 8px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 12px rgba(0,0,0,0.5);
+}
+
+/* Cinematic Button Colors */
+.insert-btn { background-color: #4169E1; color: #fff; box-shadow: 0 0 15px #4169E1; }
+.fetch-btn { background-color: #6A0DAD; color: #fff; box-shadow: 0 0 15px #6A0DAD; }
+.edit-btn { background-color: #740074; color: #fff; box-shadow: 0 0 15px #740074; }
+.delete-btn { background-color:#7f0c23; color: #fff; box-shadow: 0 0 15px #7f0c23; }
+
+/* Button Hover Animation */
+a button:hover, button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5), 0 0 35px rgba(65, 105, 225, 0.7);
+    filter: brightness(1.2);
+}
+
+/* ---------- Table Styles ---------- */
+table {
+    width: 100%;
+    margin: auto;
+    border-collapse: collapse;
+    background: rgba(30, 30, 50, 0.85);
+    color: #FFFFF0;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #555555;
+}
+th { background: #4169E1; color: #FFFFF0; text-shadow: 0 0 5px #000; }
+tr:nth-child(even) { background: #2C2F48; }
+tr:hover {
+    background: rgba(58, 63, 92, 0.9);
+    box-shadow: inset 0 0 10px rgba(65,105,225,0.4);
+    transition: all 0.3s ease;
+}
+img { width: 100px; border-radius: 6px; }
+
+/* ---------- Trailer Link ---------- */
+a[target="_blank"] {
+    color: #FFD700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+a[target="_blank"]:hover {
+    text-shadow: 0 0 15px #FFD700;
+    transform: scale(1.05);
+}
+
+/* ---------- Form Styles ---------- */
+form { text-align: left; }
+form label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+    color: #FFFFF0;
+}
+form input[type="text"],
+form input[type="url"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border: 1px solid #555555;
+    background: #1F1F2E;
+    color: #FFFFF0;
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: inset 0 0 5px rgba(65, 105, 225, 0.4);
+}
+form textarea { resize: vertical; }
+form input[type="radio"] { margin-left: 5px; }
+form button { display: block; margin: 20px auto 0 auto; }
+
+/* ---------- Star Rating ---------- */
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 6px;
+    margin: 10px 0;
+}
+.rating input { display: none; }
+.rating label {
+    font-size: 32px;
+    color: #bbb;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+}
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input:checked ~ label {
+    color: #FFD700;
+    transform: scale(1.2);
+    text-shadow: 0 0 8px #FFD700;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
